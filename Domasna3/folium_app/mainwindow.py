@@ -30,17 +30,20 @@ class Line2(QtWidgets.QLineEdit):
             #print(self.parent().children())
             #for child in self.parent().children():
             #    print(child.objectName())
-            #generate_map(coor)
-            print(self.text())
             file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "map.html"))
             local_url = QUrl.fromLocalFile(file_path)
             conn = sqlite3.connect("baza.db")
+            command = ("select lat from gradovi where ime like \""+self.parent().children()[3].text()+"\";")
+            startlat = conn.execute(command).fetchall()[0][0]
+            command = ("select lon from gradovi where ime like \""+self.parent().children()[3].text()+"\";")
+            startlon = conn.execute(command).fetchall()[0][0]
             command = ("select lat from gradovi where ime like \""+self.text()+"\";")
-            destlat = conn.execute(command).fetchall()
-            print(destlat)
-            command = ("select lon from gradovi where ime like \""+str(self.text())+"\";")
-            deslon = conn.execute(command).fetchall()
-            print(destlat[0]+" "+deslon[0]+" ")
+            destlat = conn.execute(command).fetchall()[0][0]
+            command = ("select lon from gradovi where ime like \""+self.text()+"\";")
+            deslon = conn.execute(command).fetchall()[0][0]
+            conn.close()
+            coor = [[startlon,startlat],[deslon,destlat]]
+            generate_map(coor)
             self.parent().children()[1].load(local_url)
             self.parent().children()[1].show()
             return
