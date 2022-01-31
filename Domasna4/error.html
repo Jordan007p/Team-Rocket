@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Route calculator app</title>
+        <style>
+            @font-face {
+                font-family: alat;
+                src: url(Alata-Regular.ttf);
+            }
+            *{
+                font-family: alat;
+                font-weight: bold;
+            }
+            #center{
+                margin: auto;
+                width: 70%;
+                border: 3px solid #0084ff;
+                padding: 10px;
+                border-radius: 10px;
+                padding-left: 30px;
+                padding-right: 30px;
+                height: 95vh;
+                background-color: rgb(189, 233, 235);
+            }
+            h1{
+                text-align: center;
+                margin: auto;
+                width: 70%;
+                padding: 10px;
+                font-size: 50px;
+            }
+            #center>div{
+                text-align: center;
+                margin: auto;
+                width: 70%;
+                margin-top: 60px;
+            }
+            #btn{
+                font-size: 50px;
+                border-radius: 15px;
+                padding-bottom: 15px;
+                padding-top: 5px;
+                padding-left: 15px;
+                padding-right: 15px;
+                background-color: #0084ff;
+                color: white;
+            }
+        </style>
+        <script>
+            function return_to_home(){
+                location.replace("/");
+            }
+        </script>
+    </head>
+    <body>
+        <div id="center">
+            <h1>Uh oh!</h1><br><br>
+            <h1>You've entered either empty inputs or invalid cities</h1><br>
+            <h1>Please return to the homepage and try again</h1><br>
+            <div>
+                <button id="btn" onclick="return_to_home()">Return to homepage</button>
+            </div>
+        </div>
+    </body>
+</html>
