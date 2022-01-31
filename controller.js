@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 80
+const port = process.env.PORT || 80
 const path = require('path');
 const bodyParser = require('body-parser');
 const router = express.Router();
