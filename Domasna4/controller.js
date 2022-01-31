@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 80
+const port = process.env.PORT || 80
 const path = require('path');
 const bodyParser = require('body-parser');
 const router = express.Router();
@@ -69,7 +69,7 @@ app.get('/map_template.html', (req, res) => {
 router.post('/result',(request,response) => {
     //response.send('Response!');
     var dataToSend;
-    const python = spawn('python', ['mapgen.py',request.body["from"],request.body["to"]]);
+    const python = spawn('python3', ['mapgen.py',request.body["from"],request.body["to"]]);
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ... '+data);
         dataToSend = data.toString();
